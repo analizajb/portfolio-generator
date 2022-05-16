@@ -1,7 +1,6 @@
-const { writeFile, copyFile } = require('./utils/generate-site.js');
-
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site');
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -12,7 +11,7 @@ const promptUser = () => {
       validate: nameInput => {
         if (nameInput) {
           return true;
-        } else { 
+        } else {
           console.log('Please enter your name!');
           return false;
         }
@@ -134,7 +133,7 @@ promptUser()
   })
   .then(pageHTML => {
     return writeFile(pageHTML);
-  })  
+  })
   .then(writeFileResponse => {
     console.log(writeFileResponse);
     return copyFile();
